@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilUsuario">
+
+    <TextView
+        android:id="@+id/titulo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dados do Usuário"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/text_nome"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Nome:"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo_text"/>
+
+    <TextView
+        android:id="@+id/campo_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aldo da Silva Barbosa"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toEndOf="@id/text_nome"
+        app:layout_constraintTop_toBottomOf="@id/titulo_text"/>
+
+    <TextView
+        android:id="@+id/text_email"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_nome"/>
+
+    <TextView
+        android:id="@+id/campo_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aldoiga@hotmail.com"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toEndOf="@id/text_email"
+        app:layout_constraintTop_toBottomOf="@id/campo_nome"/>
+
+
+    <TextView
+        android:id="@+id/text_telefone"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Telefone:"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_email"/>
+
+    <TextView
+        android:id="@+id/campo_telefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="77991082394"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toEndOf="@id/text_telefone"
+        app:layout_constraintTop_toBottomOf="@id/campo_email"/>
+
+
+    <TextView
+        android:id="@+id/text_endereco"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:text="Endereco:"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_telefone"/>
+
+    <TextView
+        android:id="@+id/campo_endereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rua das algarobas, 96, Alto dos Brasilia"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toEndOf="@id/text_endereco"
+        app:layout_constraintTop_toBottomOf="@id/campo_telefone"/>
+
+    <TextView
+        android:id="@+id/text_cidade"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Cidade:"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_endereco"/>
+
+    <TextView
+        android:id="@+id/campo_cidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Igaporã"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toEndOf="@id/text_cidade"
+        app:layout_constraintTop_toBottomOf="@id/campo_endereco"/>
+
+
+    <TextView
+        android:id="@+id/text_estado"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Estado:"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_cidade"/>
+
+    <TextView
+        android:id="@+id/campo_estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bahia"
+        android:layout_marginTop="50px"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toEndOf="@id/text_estado"
+        app:layout_constraintTop_toBottomOf="@id/campo_cidade"/>
+
+    <Button
+        android:id="@+id/bt_editarDados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Editar Dados"
+        android:backgroundTint="@color/alert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/campo_estado"/>
+
+    <Button
+        android:id="@+id/bt_deslogar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="Deslogar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_editarDados"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
