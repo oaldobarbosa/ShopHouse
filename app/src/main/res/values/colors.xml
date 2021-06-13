@@ -10,4 +10,5 @@
     <color name="cinza">#DCDCDC</color>
     <color name="alert">#F5C603</color>
     <color name="warning"></color>
+    <color name="success">#3CAE40</color>
 </resources>

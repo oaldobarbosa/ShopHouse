@@ -17,23 +17,23 @@ public class PerfilUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_usuario);
+
         //esconder toolbar
         getSupportActionBar().hide();
+
+        //iniciando Componentes
+        IniciarComponentes();
 
         //deslogar
         bt_deslogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //codigo firebase
-
+                //codigo firebase para colocar
                 Intent intent = new Intent(PerfilUsuario.this, FormLogin.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
-
     }
 
     private void IniciarComponentes(){

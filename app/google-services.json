@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "340873067831",
+    "project_id": "shophouse-34733",
+    "storage_bucket": "shophouse-34733.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340873067831:android:3b6845d7c59adeeb86aeb2",
+        "android_client_info": {
+          "package_name": "com.example.shophouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340873067831-pcovpbovaqriltuvmd7vd5cobnau6to3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo8xoC-NvZ6yvIzb5nVH71pd74iAdvqUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340873067831-pcovpbovaqriltuvmd7vd5cobnau6to3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

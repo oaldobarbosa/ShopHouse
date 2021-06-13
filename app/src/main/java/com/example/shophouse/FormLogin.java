@@ -44,12 +44,14 @@ public class FormLogin extends AppCompatActivity {
     }
      */
 
-    //redirecionar para tela principal
+    /*redirecionar para tela principal
     private void TelaPrincipal(){
         Intent intent = new Intent(FormLogin.this, TelaPrincipal.class);
         startActivity(intent);
         finish();
     }
+
+     */
 
     private void IniciarComponentes(){
 
