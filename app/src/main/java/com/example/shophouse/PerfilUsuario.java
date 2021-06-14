@@ -32,6 +32,18 @@ public class PerfilUsuario extends AppCompatActivity {
                 Intent intent = new Intent(PerfilUsuario.this, FormLogin.class);
                 startActivity(intent);
                 finish();
+
+            }
+        });
+
+
+        //redirecionar para tela de editar dados
+        bt_editarDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PerfilUsuario.this, FormEditar.class);
+                startActivity(intent);
+
             }
         });
     }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:hint="Editar Informações"
+        android:textSize="40sp"/>
+
+    <EditText
+        android:id="@+id/edit_nome"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:inputType="text"
+        android:hint="Nome" />
+
+    <EditText
+        android:id="@+id/edit_telefone"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:inputType="phone"
+        android:hint="Telefone" />
+
+    <EditText
+        android:id="@+id/edit_endereco"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:inputType="text"
+        android:hint="Endereço(rua, bairro, numero)" />
+
+    <EditText
+        android:id="@+id/edit_cidade"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:inputType="text"
+        android:hint="Cidade" />
+
+    <EditText
+        android:id="@+id/edit_estado"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:inputType="text"
+        android:hint="Estado" />
+
+    <EditText
+        android:id="@+id/edit_senha"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:inputType="textPassword"
+        android:hint="Senha" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Salvar Alterações"
+        android:textAllCaps="false"/>
+
+</LinearLayout>

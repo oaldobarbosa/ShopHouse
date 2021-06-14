@@ -24,12 +24,13 @@ public class FormLogin extends AppCompatActivity {
         //iniciando componentes
         IniciarComponentes();
 
-        //telacadastro
+        //redirecionar para tela de cadastro
         bt_cadastrese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FormLogin.this, FormCadastro.class);
                 startActivity(intent);
+                finish();
             }
         });
 
