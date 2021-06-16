@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="18dp"
+        android:text="Alterar Dados do Imóvel:"
+        android:textSize="35sp"/>
+
+
+    <EditText
+        android:id="@+id/edit_titulo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:hint="Título" />
+
+    <EditText
+        android:id="@+id/edit_descricao"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:hint="Descrição" />
+
+    <EditText
+        android:id="@+id/edit_endereco"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:hint="Endereço(rua, numero, bairro)" />
+
+    <EditText
+        android:id="@+id/edit_estado"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:hint="Estado" />
+
+    <EditText
+        android:id="@+id/edit_cidade"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:hint="Cidade" />
+
+    <EditText
+        android:id="@+id/edit_telefone"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:hint="Fone para Contato" />
+
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/cinza"
+        android:hint="Email para Contato" />
+
+    <Button
+        android:id="@+id/bt_salvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Salvar Alterações"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/success"/>
+
+</LinearLayout>

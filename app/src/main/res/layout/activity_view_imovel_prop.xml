@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".ViewImovelProp">
+
+    <LinearLayout
+        android:id="@+id/linear_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imagem_imovel"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="20dp"
+            android:text="Titulo Do Imovel"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Descrição:"
+            android:textColor="@color/purple_700"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/campo_descricao"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Casa com 2 quartos, 3 banheiros, área de 300 metros contruídos."
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Endereço:"
+            android:textColor="@color/purple_700"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/campo_endereco"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Rua das Pedras, 98, Alto Caiçara"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/campo_cidade"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Guanambi"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@id/campo_estado"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Bahia"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Contato:"
+            android:textColor="@color/purple_700"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/campo_telefone"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Phone: 77991084598"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/campo_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Email: exemplo@exemplo.com"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Editar"
+        android:backgroundTint="@color/alert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bt_deletar"
+        app:layout_constraintTop_toBottomOf="@+id/linear_lay"/>
+    <Button
+        android:id="@+id/bt_deletar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Deletar"
+        android:backgroundTint="@color/warning"
+        app:layout_constraintStart_toEndOf="@id/bt_editar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_lay"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
