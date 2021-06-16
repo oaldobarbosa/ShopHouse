@@ -10,5 +10,7 @@ public class FormEditarImovel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_editar_imovel);
+        //esconder toolbar
+        getSupportActionBar().hide();
     }
 }
