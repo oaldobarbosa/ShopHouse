@@ -13,67 +13,111 @@
         android:hint="Editar Informações"
         android:textSize="40sp"/>
 
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:hint="Nome:"
+        android:textSize="20sp"        />
+
     <EditText
         android:id="@+id/edit_nome"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
         android:inputType="text"
-        android:hint="Nome" />
+        android:hint="Nome"
+        android:text=""/>
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:hint="Telefone:"
+        android:textSize="20sp"        />
     <EditText
         android:id="@+id/edit_telefone"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
         android:inputType="phone"
-        android:hint="Telefone" />
+        android:hint="Telefone"
+        android:text=""/>
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:hint="Endereço:"
+        android:textSize="20sp"        />
     <EditText
         android:id="@+id/edit_endereco"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
         android:inputType="text"
         android:hint="Endereço(rua, bairro, numero)" />
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:hint="Cidade:"
+        android:textSize="20sp"        />
     <EditText
         android:id="@+id/edit_cidade"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
         android:inputType="text"
-        android:hint="Cidade" />
+        android:hint="Cidade"
+        android:text=""/>
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:hint="Estado:"
+        android:textSize="20sp"        />
     <EditText
         android:id="@+id/edit_estado"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
         android:inputType="text"
-        android:hint="Estado" />
+        android:hint="Estado"
+        android:text=""/>
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:hint="Senha:"
+        android:textSize="20sp"        />
     <EditText
         android:id="@+id/edit_senha"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
         android:inputType="textPassword"
-        android:hint="Senha" />
+        android:hint="Senha"
+        android:text=""/>
 
     <Button
+        android:id="@+id/bt_salvarAlteracoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

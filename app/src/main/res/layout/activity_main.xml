@@ -20,13 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Home"
-                android:textSize="50sp"
-                android:textStyle="bold"
-                android:gravity="center"/>
+                android:layout_margin="10dp"/>
+
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -40,6 +39,8 @@
                 app:backgroundTint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

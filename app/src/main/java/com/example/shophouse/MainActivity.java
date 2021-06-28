@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,9 +14,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
     //iniciando variaveis
     DrawerLayout drawerLayout;
+    RecyclerView recyclerView;
+
+    //dados para teste
+    String s1[], s2[];
+    int images[] = {R.drawable.logo, R.drawable.logo, R.drawable.logo,
+            R.drawable.logo, R.drawable.logo, R.drawable.logo,
+            R.drawable.logo, R.drawable.logo, R.drawable.logo, R.drawable.logo};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +36,25 @@ public class MainActivity extends AppCompatActivity {
 
         //assing variavel
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        //implementando recycle
+        //recyclerview
+        recyclerView = findViewById(R.id.recyclerView);
+        //
+        //
+        //
+        //implementando recycle
+        s1 = getResources().getStringArray(R.array.programming_languages);
+        s2 = getResources().getStringArray(R.array.description);
+        //
+        //
+        //
+        //ImovelAdapter
+        ImovelAdapter imovelAdapter = new ImovelAdapter(this, s1, s2, images);
+        recyclerView.setAdapter(imovelAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
     public void ClickMenu(View view){
@@ -74,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void ClickLogout(View view){
         //close app
-        logout(this);
+        Logout(this);
         //redirectActivity(this,);
     }
 
-    public static void logout(Activity activity) {
+    public void Logout(Activity activity) {
         //inicializado aleta modal
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //set title
@@ -88,10 +118,13 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
                 //finish activy
-                activity.finishAffinity();
-                //exit
-                System.exit(0);
+                //logout
+                FirebaseAuth.getInstance().signOut();
+
+                ChamarTelaLogin();
+
             }
         });
 
@@ -106,6 +139,14 @@ public class MainActivity extends AppCompatActivity {
 
         //show dialog
         builder.show();
+    }
+
+    public void ChamarTelaLogin() {
+
+        //redirecionar para tela de login
+        Intent intent = new Intent(MainActivity.this, FormLogin.class);
+        startActivity(intent);
+        finish();
     }
 
     public static void redirectActivity(Activity activity, Class aClass) {

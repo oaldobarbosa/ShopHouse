@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,6 +61,13 @@ public class FormLogin extends AppCompatActivity {
                 if (email.isEmpty() || senha.isEmpty()){
                     //preencher tood os campos
                     Snackbar snackbar = Snackbar.make(v, mensagens[0], Snackbar.LENGTH_SHORT);
+
+                    //mandar a snackbar pro topo
+                    View view = snackbar.getView();
+                    FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                    params.gravity = Gravity.TOP;
+                    view.setLayoutParams(params);
+
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
@@ -85,6 +94,7 @@ public class FormLogin extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+
                             TelaPrincipal();
 
                         }
@@ -100,6 +110,13 @@ public class FormLogin extends AppCompatActivity {
                         erro = "erro ao logar";
                     }
                     Snackbar snackbar = Snackbar.make(view, erro, Snackbar.LENGTH_SHORT);
+
+                    //mandar a snackbar pro topo
+                    View view = snackbar.getView();
+                    FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                    params.gravity = Gravity.TOP;
+                    view.setLayoutParams(params);
+
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();

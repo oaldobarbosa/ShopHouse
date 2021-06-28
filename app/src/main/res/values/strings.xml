@@ -17,4 +17,30 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="programming_languages">
+        <item>Teste1</item>
+        <item>Teste2</item>
+        <item>Teste3</item>
+        <item>Teste4</item>
+        <item>Teste5</item>
+        <item>Teste6</item>
+        <item>Teste7</item>
+        <item>Teste8</item>
+        <item>Teste9</item>
+        <item>Teste10</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>Igapora</item>
+        <item>Brumado</item>
+        <item>Cte</item>
+        <item>Gbi</item>
+        <item>Tanque Novo</item>
+        <item>Riacho</item>
+        <item>Lapa</item>
+        <item>Palmas de Monte Alto</item>
+        <item>Iguruçu</item>
+        <item>Cota Excedida</item>
+    </string-array>
+
 </resources>

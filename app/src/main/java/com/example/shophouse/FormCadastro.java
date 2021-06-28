@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -63,6 +65,13 @@ public class FormCadastro extends AppCompatActivity {
                         cidade.isEmpty() || estado.isEmpty() || senha.isEmpty() ){
                     //preencher tood os campos
                     Snackbar snackbar = Snackbar.make(v, mensagens[0], Snackbar.LENGTH_SHORT);
+
+                    //mandar a snackbar pro topo
+                    View view = snackbar.getView();
+                    FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                    params.gravity = Gravity.TOP;
+                    view.setLayoutParams(params);
+
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
@@ -88,6 +97,13 @@ public class FormCadastro extends AppCompatActivity {
 
                     //realizado com sucesso
                     Snackbar snackbar = Snackbar.make(v, mensagens[1], Snackbar.LENGTH_SHORT);
+
+                    //mandar a snackbar pro topo
+                    View view = snackbar.getView();
+                    FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                    params.gravity = Gravity.TOP;
+                    view.setLayoutParams(params);
+
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
@@ -113,6 +129,13 @@ public class FormCadastro extends AppCompatActivity {
 
                     //exibir mensagem de erro
                     Snackbar snackbar = Snackbar.make(v, erro, Snackbar.LENGTH_SHORT);
+
+                    //mandar a snackbar pro topo
+                    View view = snackbar.getView();
+                    FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                    params.gravity = Gravity.TOP;
+                    view.setLayoutParams(params);
+
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
@@ -144,6 +167,7 @@ public class FormCadastro extends AppCompatActivity {
         usuarioAtualId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         DocumentReference documentReference = db.collection("Usuarios").document(usuarioAtualId);
+
         documentReference.set(usuarios).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

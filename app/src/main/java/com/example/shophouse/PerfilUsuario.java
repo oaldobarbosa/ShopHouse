@@ -46,6 +46,7 @@ public class PerfilUsuario extends AppCompatActivity {
                 Intent intent = new Intent(PerfilUsuario.this, FormLogin.class);
                 startActivity(intent);
                 finish();
+                finish();
 
             }
         });
