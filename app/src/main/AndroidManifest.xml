@@ -17,8 +17,8 @@
         <activity android:name=".ViewImovel" />
         <activity android:name=".PerfilUsuario" />
         <activity android:name=".FormCadastro" />
-        <activity android:name=".FormLogin" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".FormLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
