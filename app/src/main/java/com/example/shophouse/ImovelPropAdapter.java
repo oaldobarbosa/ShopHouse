@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelViewHolder> {
+public class ImovelPropAdapter extends RecyclerView.Adapter<ImovelPropAdapter.ImovelPropViewHolder> {
 
     String data1[], data2[];
     int images[];
     Context context;
 
-    public ImovelAdapter(Context ct, String s1[], String s2[], int img[]){
+    public ImovelPropAdapter(Context ct, String s1[], String s2[], int img[]){
         context = ct;
         data1 = s1;
         data2 = s2;
@@ -32,15 +32,15 @@ public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelView
     @NonNull
     @NotNull
     @Override
-    public ImovelViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public ImovelPropViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.imovel_item, parent, false);
-        return new ImovelViewHolder(view);
+        return new ImovelPropViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ImovelViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull ImovelPropViewHolder holder, int position) {
         holder.titulo.setText(data1[position]);
         holder.cidade.setText(data2[position]);
         holder.imagem.setImageResource(images[position]);
@@ -49,7 +49,7 @@ public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelView
         holder.cardLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ViewImovel.class);
+                Intent intent = new Intent(context, ViewImovelProp.class);
                 intent.putExtra("data1", data1[position]);
                 intent.putExtra("data2", data2[position]);
                 intent.putExtra("imagem", images[position]);
@@ -65,7 +65,7 @@ public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelView
         return images.length;
     }
 
-    public class ImovelViewHolder extends RecyclerView.ViewHolder{
+    public class ImovelPropViewHolder extends RecyclerView.ViewHolder{
 
         TextView titulo, cidade, estado;
         ImageView imagem;
@@ -73,7 +73,7 @@ public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelView
         //id item card
         ConstraintLayout cardLayout;
 
-        public ImovelViewHolder(@NonNull @NotNull View itemView) {
+        public ImovelPropViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
             titulo = itemView.findViewById(R.id.textViewTituloImovel);

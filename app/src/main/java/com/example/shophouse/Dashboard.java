@@ -50,9 +50,9 @@ public class Dashboard extends AppCompatActivity {
         //
         //
         //
-        //ImovelAdapter
-        ImovelAdapter imovelAdapter = new ImovelAdapter(this, s1, s2, images);
-        recyclerView.setAdapter(imovelAdapter);
+        //ImovelpropAdapter
+        ImovelPropAdapter imovelPropAdapter = new ImovelPropAdapter(this, s1, s2, images);
+        recyclerView.setAdapter(imovelPropAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 

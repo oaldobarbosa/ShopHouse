@@ -30,7 +30,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@color/cinza"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:hint="Email" />
 
     <EditText
@@ -80,7 +80,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@color/cinza"
-        android:inputType="numberPassword"
+        android:inputType="number"
         android:hint="Senha" />
 
     <Button

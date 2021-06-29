@@ -99,22 +99,6 @@
         android:hint="Estado"
         android:text=""/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:hint="Senha:"
-        android:textSize="20sp"        />
-    <EditText
-        android:id="@+id/edit_senha"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/cinza"
-        android:inputType="textPassword"
-        android:hint="Senha"
-        android:text=""/>
 
     <Button
         android:id="@+id/bt_salvarAlteracoes"

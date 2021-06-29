@@ -58,6 +58,7 @@ public class PerfilUsuario extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PerfilUsuario.this, FormEditar.class);
                 startActivity(intent);
+                finish();
 
             }
         });

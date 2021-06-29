@@ -3,6 +3,7 @@ package com.example.shophouse;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -108,6 +109,9 @@ public class FormCadastro extends AppCompatActivity {
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
 
+                    //chamar tela principal
+                    TelaPricipal();
+
                 }else{
                     String erro;
                     try {
@@ -144,6 +148,12 @@ public class FormCadastro extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void TelaPricipal() {
+        Intent intent = new Intent(FormCadastro.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     //salvar dados do usuario

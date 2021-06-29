@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     //dados para teste
     String s1[], s2[];
-    int images[] = {R.drawable.logo, R.drawable.logo, R.drawable.logo,
+    int images[] = {R.drawable.ic_dashboard, R.drawable.logo, R.drawable.logo,
             R.drawable.logo, R.drawable.logo, R.drawable.logo,
             R.drawable.logo, R.drawable.logo, R.drawable.logo, R.drawable.logo};
 
