@@ -1,6 +1,8 @@
 package com.example.shophouse;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
@@ -9,23 +11,43 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.core.OrderBy;
+import com.google.firestore.v1.StructuredQuery;
+import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     //iniciando variaveis
     DrawerLayout drawerLayout;
     RecyclerView recyclerView;
+    String usuarioAtualId;
 
-    //dados para teste
-    String s1[], s2[];
-    int images[] = {R.drawable.ic_dashboard, R.drawable.logo, R.drawable.logo,
-            R.drawable.logo, R.drawable.logo, R.drawable.logo,
-            R.drawable.logo, R.drawable.logo, R.drawable.logo, R.drawable.logo};
+    //contexto
+    Context context;
+
+    private FirebaseFirestore firebaseFirestore;
+    private FirestoreRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,27 +55,72 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //esconder toolbar
         getSupportActionBar().hide();
-
         //assing variavel
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        //implementando recycle
-        //recyclerview
+        //instancia do firestore
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        // pegando recyclerview
         recyclerView = findViewById(R.id.recyclerView);
-        //
-        //
-        //
-        //implementando recycle
-        s1 = getResources().getStringArray(R.array.programming_languages);
-        s2 = getResources().getStringArray(R.array.description);
-        //
-        //
-        //
-        //ImovelAdapter
-        ImovelAdapter imovelAdapter = new ImovelAdapter(this, s1, s2, images);
-        recyclerView.setAdapter(imovelAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //query
+        usuarioAtualId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Query query = firebaseFirestore.collection("Imoveis")/*.whereEqualTo("id_user", usuarioAtualId)*/.orderBy("data_cadastro", Query.Direction.DESCENDING);
+        //recycleroptions
+        FirestoreRecyclerOptions<Imovel> options = new FirestoreRecyclerOptions.Builder<Imovel>()
+                .setQuery(query, Imovel.class)
+                .build();
+        //firestore recycler adapter
+        adapter = new FirestoreRecyclerAdapter<Imovel, ImovelViewHolder>(options) {
+
+            @NonNull
+            @NotNull
+            @Override
+            public ImovelViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+
+
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.imovel_item, parent, false);
+                return new ImovelViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull @NotNull ImovelViewHolder holder, int position, @NonNull @NotNull Imovel model) {
+                //
+                //
+
+                Picasso.get().load(model.getImg()).resize(60, 60).centerCrop().into(holder.imagemImovel);
+
+                holder.titulo.setText(model.getTitulo());
+                holder.cidade.setText(model.getCidade());
+                holder.estado.setText(model.getEstado());
+
+                //clicar no Imovel
+                holder.cardLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), ViewImovel.class);
+
+                        intent.putExtra("img", model.getImg());
+                        intent.putExtra("titulo", model.getTitulo());
+                        intent.putExtra("descricao", model.getDescricao());
+                        intent.putExtra("endereco", model.getEndereco());
+                        intent.putExtra("cidade", model.getCidade());
+                        intent.putExtra("estado", model.getEstado());
+                        intent.putExtra("telefone", model.getTelefone());
+                        intent.putExtra("email", model.getEmail());
+
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
+            }
+
+        };
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -164,5 +231,46 @@ public class MainActivity extends AppCompatActivity {
 
         //close drawer
         closeDrawer(drawerLayout);
+    }
+
+
+
+
+    //teste firebase ui
+    //Imovel View Holder
+
+    private class ImovelViewHolder extends RecyclerView.ViewHolder {
+
+        private ImageView imagemImovel;
+
+        private TextView titulo;
+        private TextView cidade;
+        private TextView estado;
+
+        //id item card
+        ConstraintLayout cardLayout;
+
+        public ImovelViewHolder(@NonNull @NotNull View itemView) {
+            super(itemView);
+
+            imagemImovel = itemView.findViewById(R.id.imagemImovel);
+            titulo = itemView.findViewById(R.id.textViewTituloImovel);
+            cidade = itemView.findViewById(R.id.textViewCidade);
+            estado = itemView.findViewById(R.id.textViewEstado);
+
+            cardLayout = itemView.findViewById(R.id.cardLayout);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
     }
 }

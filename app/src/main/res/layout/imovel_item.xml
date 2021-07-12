@@ -23,18 +23,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="2dp"
+            android:padding="2dp">
 
-            android:padding="2dp"
-            >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imagemCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                android:layout_margin="5dp"
+                android:elevation="10dp"
+                tools:ignore="InvalidId,MissingConstraints"
+                >
 
-            <ImageView
-                android:id="@+id/imagemImovel"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+                    <ImageView
+                        android:id="@+id/imagemImovel"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        app:srcCompat="@drawable/logo" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/textViewTituloImovel"
@@ -46,7 +57,7 @@
                 android:text="Titulo"
                 android:textSize="25sp"
                 android:textColor="@color/purple_700"
-                app:layout_constraintStart_toEndOf="@+id/imagemImovel"
+                app:layout_constraintStart_toEndOf="@+id/imagemCard"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -61,7 +72,7 @@
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/imagemImovel"
+                app:layout_constraintStart_toEndOf="@+id/imagemCard"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTituloImovel" />
 
             <TextView

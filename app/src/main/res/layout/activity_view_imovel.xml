@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/imagem_imovel"
         android:layout_width="250dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:src="@drawable/logo"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"/>
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/purple_700"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:text="Titulo Do Imovel"/>
@@ -28,12 +28,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Descrição:"
+        android:textSize="25sp"
         android:textColor="@color/purple_700"
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/campo_descricao"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="Casa com 2 quartos, 3 banheiros, área de 300 metros contruídos."
         android:layout_gravity="center"/>
 
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Endereço:"
+        android:textSize="25sp"
         android:textColor="@color/purple_700"
         android:layout_gravity="center"/>
     <TextView
@@ -49,18 +52,21 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Rua das Pedras, 98, Alto Caiçara"
+        android:textSize="20sp"
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/campo_cidade"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Guanambi"
+        android:textSize="20sp"
         android:layout_gravity="center"/>
     <TextView
         android:id="@id/campo_estado"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Bahia"
+        android:textSize="20sp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -68,18 +74,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Contato:"
+        android:textSize="25sp"
         android:textColor="@color/purple_700"
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/campo_telefone"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="Phone: 77991084598"
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/campo_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="Email: exemplo@exemplo.com"
         android:layout_gravity="center"/>
 

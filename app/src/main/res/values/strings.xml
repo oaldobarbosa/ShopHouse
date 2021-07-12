@@ -17,6 +17,16 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="estados">
+        <item></item>
+        <item>Bahia</item>
+    </string-array>
+
+    <string-array name="cidades">
+        <item></item>
+        <item>Guanambi</item>
+    </string-array>
+
     <string-array name="programming_languages">
         <item>Teste1</item>
         <item>Teste2</item>

@@ -34,12 +34,9 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         //esconder toolbar
         getSupportActionBar().hide();
-
         //assing variavel
         drawerLayout = findViewById(R.id.drawer_layout);
-
         //implementando recycle
-        //recyclerview
         recyclerView = findViewById(R.id.recyclerView);
         //
         //

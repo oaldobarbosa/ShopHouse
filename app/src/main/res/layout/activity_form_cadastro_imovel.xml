@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical">
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,32 +25,80 @@
         android:textSize="35sp"/>
 
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Título:"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
     <EditText
         android:id="@+id/edit_titulo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
-        android:hint="Título" />
+         />
 
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Descrição:"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
     <EditText
         android:id="@+id/edit_descricao"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@color/cinza"
-        android:hint="Descrição" />
+        android:background="@color/cinza"/>
 
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Endereço:"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
     <EditText
         android:id="@+id/edit_endereco"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
-        android:hint="Endereço(rua, numero, bairro)" />
+        android:hint="(rua, numero, bairro)" />
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Estado:"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+    <Spinner
+        android:id="@+id/select_estado"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:background="@color/cinza"
+        android:spinnerMode="dropdown" />
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Cidade:"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+    <Spinner
+        android:id="@+id/select_cidade"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:background="@color/cinza"
+        android:spinnerMode="dropdown" />
+
+    <!--
 
     <EditText
         android:id="@+id/edit_estado"
@@ -61,23 +118,44 @@
         android:background="@color/cinza"
         android:hint="Cidade" />
 
+    -->
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Telefone:"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
     <EditText
         android:id="@+id/edit_telefone"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:inputType="phone"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@color/cinza"
-        android:hint="Fone para Contato" />
+        android:hint="(00) 00000-0000 " />
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
     <EditText
         android:id="@+id/edit_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:inputType="textEmailAddress"
         android:background="@color/cinza"
-        android:hint="Email para Contato" />
+        android:hint="example@example.com" />
+
+    <ImageView
+        android:id="@+id/iv_imagemSelecionada"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_image" />
 
     <Button
         android:id="@+id/bt_selecionarImagem"
@@ -88,15 +166,18 @@
         android:text="Selecionar Imagem"
         android:textAllCaps="false"/>
 
-
     <Button
         android:id="@+id/bt_cadastrarImovel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         android:text="Cadastrar Imóvel"
         android:textAllCaps="false"
         android:layout_gravity="center"
         android:backgroundTint="@color/success"/>
 
+
+
 </LinearLayout>
+</androidx.core.widget.NestedScrollView>

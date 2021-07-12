@@ -3,6 +3,9 @@ package com.example.shophouse;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class PerfilUsuario extends AppCompatActivity {
 
     private TextView campo_nome, campo_email, campo_telefone, campo_endereco, campo_cidade, campo_estado;
-    private Button bt_editarDados, bt_deslogar;
+    private Button bt_editarDados, bt_excluirConta;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String usuarioAtualId;
 
@@ -35,23 +38,6 @@ public class PerfilUsuario extends AppCompatActivity {
         IniciarComponentes();
 
 
-        //deslogar
-        bt_deslogar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //codigo firebase para colocar
-                FirebaseAuth.getInstance().signOut();
-
-                Intent intent = new Intent(PerfilUsuario.this, FormLogin.class);
-                startActivity(intent);
-                finish();
-                finish();
-
-            }
-        });
-
-
         //redirecionar para tela de editar dados
         bt_editarDados.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +48,43 @@ public class PerfilUsuario extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void ClickExcluirConta(View view) {
+        ExcluirConta(this);
+    }
+    
+    private void ExcluirConta(Activity activity) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        //set title
+        builder.setTitle("Excluir Conta");
+        builder.setMessage("Voce deseja realmente excluir a conta?");
+
+        //bt sim
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //codigo firebase
+
+                ChamarTelaLogin();
+
+            }
+        });
+
+        //bt nao
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //fechar dialogo
+                dialog.dismiss();
+            }
+        });
+
+        //show dialog
+        builder.show();
     }
 
     @Override
@@ -101,7 +124,17 @@ public class PerfilUsuario extends AppCompatActivity {
 
         //buttons
         bt_editarDados = findViewById(R.id.bt_editarDados);
-        bt_deslogar = findViewById(R.id.bt_deslogar);
+        bt_excluirConta = findViewById(R.id.bt_excluirConta);
+        //bt_deslogar = findViewById(R.id.bt_deslogar);
 
     }
+
+    public void ChamarTelaLogin() {
+
+        //redirecionar para tela de login
+        Intent intent = new Intent(PerfilUsuario.this, FormLogin.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

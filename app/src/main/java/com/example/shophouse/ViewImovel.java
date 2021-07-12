@@ -7,13 +7,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 public class ViewImovel extends AppCompatActivity {
 
     ImageView imagem_imovel;
-    TextView titulo_imovel, campo_descricao;
+    TextView titulo_imovel, campo_descricao, campo_endereco, campo_cidade, campo_estado, campo_telefone, campo_email;
 
-    String data1, data2;
-    int imagem;
+
+
+    String img, titulo, descricao, endereco, cidade, estado, telefone, email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +36,33 @@ public class ViewImovel extends AppCompatActivity {
     }
 
     private void IniciarComponentes() {
+
         imagem_imovel = findViewById(R.id.imagem_imovel);
         titulo_imovel = findViewById(R.id.titulo_imovel);
         campo_descricao = findViewById(R.id.campo_descricao);
+        campo_endereco = findViewById(R.id.campo_endereco);
+        campo_cidade = findViewById(R.id.campo_cidade);
+        campo_estado = findViewById(R.id.campo_estado);
+        campo_telefone = findViewById(R.id.campo_telefone);
+        campo_email = findViewById(R.id.campo_email);
     }
 
     private void getData(){
-        if (getIntent().hasExtra("imagem") && getIntent().hasExtra("data1")
-                && getIntent().hasExtra("data2")){
+        if (getIntent().hasExtra("img") && getIntent().hasExtra("titulo")
+                && getIntent().hasExtra("descricao") && getIntent().hasExtra("endereco")
+                && getIntent().hasExtra("cidade") && getIntent().hasExtra("estado")
+                && getIntent().hasExtra("telefone") && getIntent().hasExtra("email")
+        ){
 
-            data1 = getIntent().getStringExtra("data1");
-            data2 = getIntent().getStringExtra("data2");
-            imagem = getIntent().getIntExtra("imagem", 1);
+            img = getIntent().getStringExtra("img");
+            titulo = getIntent().getStringExtra("titulo");
+            descricao = getIntent().getStringExtra("descricao");
+            endereco = getIntent().getStringExtra("endereco");
+            cidade = getIntent().getStringExtra("cidade");
+
+            estado = getIntent().getStringExtra("estado");
+            telefone = getIntent().getStringExtra("telefone");
+            email = getIntent().getStringExtra("email");
 
 
         }else{
@@ -53,9 +72,20 @@ public class ViewImovel extends AppCompatActivity {
     }
 
     private void setData(){
-        titulo_imovel.setText(data1);
-        campo_descricao.setText(data2);
-        imagem_imovel.setImageResource(imagem);
+
+
+
+        Picasso.get().load(img).fit().into(imagem_imovel);
+
+        titulo_imovel.setText(titulo);
+
+        campo_descricao.setText(descricao);
+        campo_endereco.setText(endereco);
+        campo_cidade.setText(cidade);
+        campo_estado.setText(estado);
+        campo_telefone.setText(telefone);
+        campo_email.setText(email);
+
 
     }
 }

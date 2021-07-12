@@ -1,7 +1,6 @@
-package com.example.shophouse;
+/*package com.example.shophouse;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelViewHolder> {
+import java.util.List;
+
+public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ViewHolderClass> {
+
+
+
+    //
 
     String data1[], data2[];
     int images[];
@@ -32,15 +37,22 @@ public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelView
     @NonNull
     @NotNull
     @Override
-    public ImovelViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public ViewHolderClass onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+
+
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.imovel_item, parent, false);
         return new ImovelViewHolder(view);
+
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ImovelViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull ViewHolderClass holder, int position) {
+
+        //
+
         holder.titulo.setText(data1[position]);
         holder.cidade.setText(data2[position]);
         holder.imagem.setImageResource(images[position]);
@@ -58,11 +70,34 @@ public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelView
             }
         });
 
+
+
     }
 
     @Override
     public int getItemCount() {
+        //testando listar do banco
         return images.length;
+    }
+
+    public class ViewHolderClass extends RecyclerView.ViewHolder{
+
+        TextView titulo, cidade, estado;
+
+        //id item card
+        ConstraintLayout cardLayout;
+
+
+        public ViewHolderClass(@NonNull @NotNull View itemView) {
+            super(itemView);
+
+            titulo = itemView.findViewById(R.id.textViewTituloImovel);
+            cidade = itemView.findViewById(R.id.textViewCidade);
+            estado = itemView.findViewById(R.id.textViewEstado);
+            //imagem = itemView.findViewById(R.id.imagemImovel);
+            cardLayout = itemView.findViewById(R.id.cardLayout);
+
+        }
     }
 
     public class ImovelViewHolder extends RecyclerView.ViewHolder{
@@ -85,3 +120,4 @@ public class ImovelAdapter extends RecyclerView.Adapter<ImovelAdapter.ImovelView
         }
     }
 }
+*/
