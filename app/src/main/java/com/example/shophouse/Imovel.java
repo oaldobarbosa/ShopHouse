@@ -1,6 +1,8 @@
   package com.example.shophouse;
 
-public class Imovel {
+  import java.io.Serializable;
+
+  public class Imovel implements Serializable {
     private String cidade;
     private String descricao;
     private String email;
@@ -10,11 +12,12 @@ public class Imovel {
     private String telefone;
     private String titulo;
     private String img;
+    private String id_imovel;
 
     private Imovel(){}
 
     private Imovel(String cidade, String descricao, String email, String endereco, String estado, String id_user,
-                   String telefone, String titulo, String img){
+                   String telefone, String titulo, String img, String id_imovel){
 
         this.cidade = cidade;
         this.descricao = descricao;
@@ -25,6 +28,7 @@ public class Imovel {
         this.telefone = telefone;
         this.titulo = titulo;
         this.img = img;
+        this.id_imovel = id_imovel;
     }
 
     public String getCidade() {
@@ -97,6 +101,14 @@ public class Imovel {
 
     public void setImg(String url) {
         this.img = url;
+    }
+
+    public String getId_imovel() {
+        return id_imovel;
+    }
+
+    public void setId_imovel(String id_imovel) {
+        this.id_imovel = id_imovel;
     }
 
     public void SalvarDadosImovel(){

@@ -12,7 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -116,17 +119,12 @@ public class FormCadastro extends AppCompatActivity {
                     String erro;
                     try {
                         throw task.getException();
-
                     }catch (FirebaseAuthWeakPasswordException e){
                         erro = "digite uma senha com no minimo 6 caracteres";
-
                     }catch (FirebaseAuthUserCollisionException e){
-
                         erro = "Já existe uma conta com o email";
                     }catch (FirebaseAuthInvalidCredentialsException e){
-
                         erro = "Email com formato inválido";
-
                     }catch (Exception e){
                         erro = "Erro ao cadastrar Usuário";
                     }
@@ -143,7 +141,6 @@ public class FormCadastro extends AppCompatActivity {
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
-
 
                 }
             }
@@ -181,14 +178,13 @@ public class FormCadastro extends AppCompatActivity {
         documentReference.set(usuarios).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
+                msfToast("Cadastro Realizado com Sucesso!");
                 Log.d("db", "Sucesso ao salvar dados");
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
                 Log.d("db_erro", "Erro ao salvar dados" + e.toString());
-
             }
         });
 
@@ -204,5 +200,15 @@ public class FormCadastro extends AppCompatActivity {
         edit_senha = findViewById(R.id.edit_senha);
         bt_cadastrar = findViewById(R.id.bt_cadastrar);
 
+        //mascara telefone
+        SimpleMaskFormatter smf = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(edit_telefone, smf);
+        edit_telefone.addTextChangedListener(mtw);
+
+    }
+
+    //mensagem
+    private void msfToast(String s) {
+        Toast.makeText(getApplicationContext(), s , Toast.LENGTH_SHORT).show();
     }
 }

@@ -13,11 +13,7 @@ public class ViewImovel extends AppCompatActivity {
 
     ImageView imagem_imovel;
     TextView titulo_imovel, campo_descricao, campo_endereco, campo_cidade, campo_estado, campo_telefone, campo_email;
-
-
-
     String img, titulo, descricao, endereco, cidade, estado, telefone, email;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +22,10 @@ public class ViewImovel extends AppCompatActivity {
         //esconder toolbar
         getSupportActionBar().hide();
 
-
         //iniciando componentes
         IniciarComponentes();
 
-        //get e set dados
+        //get e set dados na view
         getData();
         setData();
     }
@@ -59,11 +54,9 @@ public class ViewImovel extends AppCompatActivity {
             descricao = getIntent().getStringExtra("descricao");
             endereco = getIntent().getStringExtra("endereco");
             cidade = getIntent().getStringExtra("cidade");
-
             estado = getIntent().getStringExtra("estado");
             telefone = getIntent().getStringExtra("telefone");
             email = getIntent().getStringExtra("email");
-
 
         }else{
             Toast.makeText(this, "Nenhum dado", Toast.LENGTH_SHORT).show();
@@ -73,12 +66,8 @@ public class ViewImovel extends AppCompatActivity {
 
     private void setData(){
 
-
-
         Picasso.get().load(img).fit().into(imagem_imovel);
-
         titulo_imovel.setText(titulo);
-
         campo_descricao.setText(descricao);
         campo_endereco.setText(endereco);
         campo_cidade.setText(cidade);

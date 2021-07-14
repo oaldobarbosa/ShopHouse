@@ -105,9 +105,6 @@ public class FormCadastroImovel extends AppCompatActivity {
                 String cidade = select_cidade.getSelectedItem().toString();
                 String telefone = edit_telefone.getText().toString();
                 String email = edit_email.getText().toString();
-                //String imagem = iv_imagemSelecionada.getDrawable().toString();
-
-
 
                 if (titulo.isEmpty() || descricao.isEmpty() || endereco.isEmpty() || estado.isEmpty() || cidade.isEmpty() ||
                 telefone.isEmpty() || email.isEmpty() ){
@@ -128,25 +125,12 @@ public class FormCadastroImovel extends AppCompatActivity {
 
                     SalvarDadosImovel();
 
-                    //realizado com sucesso
-                    Snackbar snackbar = Snackbar.make(v, mensagens[1], Snackbar.LENGTH_SHORT);
-
-                    //mandar a snackbar pro topo
-                    View view = snackbar.getView();
-                    FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
-                    params.gravity = Gravity.TOP;
-                    view.setLayoutParams(params);
-
-                    snackbar.setBackgroundTint(Color.WHITE);
-                    snackbar.setTextColor(Color.BLACK);
-                    snackbar.show();
-
                 }//fim else
 
             }
         });
 
-
+        //botão para selecionar imagem
         bt_selecionarImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +140,7 @@ public class FormCadastroImovel extends AppCompatActivity {
 
     }
 
+    //funcao para selecionar imagem
     private void selecionarImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -163,7 +148,7 @@ public class FormCadastroImovel extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "SelecionarImagem" ), 1);
     }
 
-    //volta do dado
+    //recebe a imagem da galeria e seta na view
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -173,6 +158,7 @@ public class FormCadastroImovel extends AppCompatActivity {
             iv_imagemSelecionada.setImageURI(uri);
         }
     }
+
 
     private void SalvarDadosImovel(){
 
@@ -184,6 +170,8 @@ public class FormCadastroImovel extends AppCompatActivity {
 
         String filename = UUID.randomUUID().toString();
         StorageReference imgRef = storageRef.child(filename);
+
+
 
         UploadTask uploadTask = imgRef.putBytes(imagem);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -210,8 +198,6 @@ public class FormCadastroImovel extends AppCompatActivity {
 
                         Map<String, Object> imoveis = new HashMap<>();
 
-                        //enviarImagem();
-
                         imoveis.put("id_user", usuarioAtualId);
                         imoveis.put("titulo", titulo);
                         imoveis.put("descricao", descricao);
@@ -223,13 +209,14 @@ public class FormCadastroImovel extends AppCompatActivity {
                         imoveis.put("data_cadastro", new Timestamp(new Date()));
                         imoveis.put("img", url);
 
-
-
                         DocumentReference documentReference = db.collection("Imoveis").document();
+                        String id_imovel = documentReference.getPath().substring(8);//gambiarra para remover o Imoveis/ kkkk
+                        imoveis.put("id_imovel", id_imovel);
 
                         documentReference.set(imoveis).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
+
                                 Log.d("db", "Sucesso ao salvar dados");
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -240,102 +227,37 @@ public class FormCadastroImovel extends AppCompatActivity {
                             }
                         });
 
-
                     }
                 });
-                msfToast("uplad ok");
+
+                //exibir mensagem e redirecionar pra activity principal
+                msfToast("Imóvel Cadastrado com Sucesso!");
+                Intent intent = new Intent(FormCadastroImovel.this, MainActivity.class);
+                startActivity(intent);
+
             }
-        });
-        //
-        //
-        //uploado de imovel
-        /*
-        String titulo = edit_titulo.getText().toString();
-        String descricao = edit_descricao.getText().toString();
-        String endereco = edit_endereco.getText().toString();
-        String estado = select_estado.getSelectedItem().toString();
-        String cidade = select_cidade.getSelectedItem().toString();
-        String telefone = edit_telefone.getText().toString();
-        String email = edit_email.getText().toString();
 
-        //instancia user
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        //capturar usuario atual
-        usuarioAtualId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        Map<String, Object> imoveis = new HashMap<>();
-
-        //enviarImagem();
-
-        imoveis.put("id_user", usuarioAtualId);
-        imoveis.put("titulo", titulo);
-        imoveis.put("descricao", descricao);
-        imoveis.put("endereco", endereco);
-        imoveis.put("estado", estado);
-        imoveis.put("cidade", cidade);
-        imoveis.put("telefone", telefone);
-        imoveis.put("email", email);
-        imoveis.put("data_cadastro", new Timestamp(new Date()));
-        imoveis.put("img", url);
-
-
-
-        DocumentReference documentReference = db.collection("Imoveis").document();
-
-        documentReference.set(imoveis).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.d("db", "Sucesso ao salvar dados");
-            }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Log.d("db_erro", "Erro ao salvar dados" + e.toString());
-
-            }
-        });
-
-         */
-
-    }
-
-    //enviar imagem para storage
-    /*
-    private void enviarImagem() {
-        //criando objeto
-        Bitmap bitmap = ( (BitmapDrawable)iv_imagemSelecionada.getDrawable() ).getBitmap();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] imagem = byteArrayOutputStream.toByteArray();
-
-        String filename = UUID.randomUUID().toString();
-        StorageReference imgRef = storageRef.child(filename);
-
-        UploadTask uploadTask = imgRef.putBytes(imagem);
-        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                msfToast("uplad ok");
+                msfToast("Selecione Uma Imagem");
             }
         });
 
     }
 
-     */
-
-
+    //mensagem
     private void msfToast(String s) {
         Toast.makeText(getApplicationContext(), s , Toast.LENGTH_SHORT).show();
     }
 
+    //funcao para pegar os ids
     private void IniciarComponentes() {
 
         edit_titulo = findViewById(R.id.edit_titulo);
         edit_descricao = findViewById(R.id.edit_descricao);
         edit_endereco = findViewById(R.id.edit_endereco);
-        //edit_estado = findViewById(R.id.edit_estado);
-        //edit_cidade = findViewById(R.id.edit_cidade);
+
         edit_telefone = findViewById(R.id.edit_telefone);
         edit_email = findViewById(R.id.edit_email);
 
@@ -354,4 +276,5 @@ public class FormCadastroImovel extends AppCompatActivity {
         bt_cadastrarImovel = findViewById(R.id.bt_cadastrarImovel);
 
     }
+
 }

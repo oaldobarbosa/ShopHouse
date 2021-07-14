@@ -43,11 +43,10 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     String usuarioAtualId;
 
-    //contexto
-    Context context;
-
     private FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
+
+    private TextView titulo_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +62,13 @@ public class MainActivity extends AppCompatActivity {
         // pegando recyclerview
         recyclerView = findViewById(R.id.recyclerView);
 
+        titulo_toolbar = findViewById(R.id.titulo_toolbar);
+        titulo_toolbar.setText("Página Inicial");
+
+
         //query
         usuarioAtualId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Query query = firebaseFirestore.collection("Imoveis")/*.whereEqualTo("id_user", usuarioAtualId)*/.orderBy("data_cadastro", Query.Direction.DESCENDING);
+        Query query = firebaseFirestore.collection("Imoveis").orderBy("data_cadastro", Query.Direction.DESCENDING);
         //recycleroptions
         FirestoreRecyclerOptions<Imovel> options = new FirestoreRecyclerOptions.Builder<Imovel>()
                 .setQuery(query, Imovel.class)
@@ -141,11 +144,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void closeDrawer(DrawerLayout drawerLayout) {
-        //close draw layout
-        //checando
+        //close draw layout(checando
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            //quando est aaberta
-            //fechar
+            //fechar quando esta aberta
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
@@ -155,13 +156,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClickHome(View view){
-        //recreat atividade
-        recreate();
+        closeDrawer(drawerLayout);
     }
 
     public void ClickDashboard(View view){
         //redirect para dashboard atividae
         redirectActivity(this, Dashboard.class);
+        finish();
     }
 
     public void ClickPerfil(View view){
@@ -233,16 +234,12 @@ public class MainActivity extends AppCompatActivity {
         closeDrawer(drawerLayout);
     }
 
-
-
-
     //teste firebase ui
     //Imovel View Holder
 
     private class ImovelViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imagemImovel;
-
         private TextView titulo;
         private TextView cidade;
         private TextView estado;
@@ -252,12 +249,10 @@ public class MainActivity extends AppCompatActivity {
 
         public ImovelViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-
             imagemImovel = itemView.findViewById(R.id.imagemImovel);
             titulo = itemView.findViewById(R.id.textViewTituloImovel);
             cidade = itemView.findViewById(R.id.textViewCidade);
             estado = itemView.findViewById(R.id.textViewEstado);
-
             cardLayout = itemView.findViewById(R.id.cardLayout);
         }
     }
@@ -273,4 +268,5 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
+
 }

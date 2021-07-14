@@ -98,27 +98,7 @@
         android:background="@color/cinza"
         android:spinnerMode="dropdown" />
 
-    <!--
 
-    <EditText
-        android:id="@+id/edit_estado"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@color/cinza"
-        android:hint="Estado" />
-
-    <EditText
-        android:id="@+id/edit_cidade"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@color/cinza"
-        android:hint="Cidade" />
-
-    -->
 
     <TextView
         android:layout_width="300dp"
@@ -153,9 +133,10 @@
     <ImageView
         android:id="@+id/iv_imagemSelecionada"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_image" />
+        android:src="@drawable/ic_image"
+         />
 
     <Button
         android:id="@+id/bt_selecionarImagem"

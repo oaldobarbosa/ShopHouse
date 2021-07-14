@@ -13,7 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -87,44 +90,6 @@ public class FormEditar extends AppCompatActivity {
         });
     }
 
-    /*
-    private void AlterarSenha(View v) {
-        //instancia usuario
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String senha = edit_senha.getText().toString();
-
-        //update senha
-        user.updatePassword(senha).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        if (task.isSuccessful()) {
-
-                            //chamar função para alterar dados
-                            AlterarDados();
-
-                            //realizado com sucesso
-                            Snackbar snackbar = Snackbar.make(v, mensagens[1], Snackbar.LENGTH_SHORT);
-
-                            //mandar a snackbar pro topo
-                            View view = snackbar.getView();
-                            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
-                            params.gravity = Gravity.TOP;
-                            view.setLayoutParams(params);
-
-                            snackbar.setBackgroundTint(Color.WHITE);
-                            snackbar.setTextColor(Color.BLACK);
-                            snackbar.show();
-
-
-                        }
-                    }
-                });
-
-    }
-    */
-
-
     //funcao para alterar
     private void AlterarDados(View v) {
 
@@ -148,18 +113,9 @@ public class FormEditar extends AppCompatActivity {
         documentReference.set(usuarios).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
+
                 //realizado com sucesso
-                Snackbar snackbar = Snackbar.make(v, mensagens[1], Snackbar.LENGTH_SHORT);
-
-                //mandar a snackbar pro topo
-                View view = snackbar.getView();
-                FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
-                params.gravity = Gravity.TOP;
-                view.setLayoutParams(params);
-
-                snackbar.setBackgroundTint(Color.WHITE);
-                snackbar.setTextColor(Color.BLACK);
-                snackbar.show();
+                msfToast("Dados Alterados com Sucesso!");
 
                 TelaPerfil();
 
@@ -194,7 +150,6 @@ public class FormEditar extends AppCompatActivity {
         //redirecionar pagina de pefil
         Intent intent = new Intent(FormEditar.this, PerfilUsuario.class);
         startActivity(intent);
-
         finish();
 
     }
@@ -213,11 +168,9 @@ public class FormEditar extends AppCompatActivity {
                 if (documentSnapshot != null){
                     edit_nome.setText(documentSnapshot.getString("nome"));
                     edit_telefone.setText(documentSnapshot.getString("telefone"));
-
                     edit_endereco.setText(documentSnapshot.getString("endereco"));
                     edit_cidade.setText(documentSnapshot.getString("cidade"));
                     edit_estado.setText(documentSnapshot.getString("estado"));
-
                 }
 
             }
@@ -231,10 +184,19 @@ public class FormEditar extends AppCompatActivity {
         edit_endereco = findViewById(R.id.edit_endereco);
         edit_cidade = findViewById(R.id.edit_cidade);
         edit_estado = findViewById(R.id.edit_estado);
-        //edit_senha = findViewById(R.id.edit_senha);
+
+        //mascara telefone
+        SimpleMaskFormatter smf = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(edit_telefone, smf);
+        edit_telefone.addTextChangedListener(mtw);
 
         bt_salvarAlteracoes = findViewById(R.id.bt_salvarAlteracoes);
 
+    }
+
+    //toast messagem
+    private void msfToast(String s) {
+        Toast.makeText(getApplicationContext(), s , Toast.LENGTH_SHORT).show();
     }
 
 

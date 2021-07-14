@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +80,6 @@ public class FormLogin extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void AutenticarUsuario(View view) {
@@ -105,10 +107,15 @@ public class FormLogin extends AppCompatActivity {
 
                     try {
                         throw task.getException();
-
+                    }catch (FirebaseAuthWeakPasswordException e) {
+                        erro = "Digite uma senha com no mínimo 6 caracteres";
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        erro = "Email Inválido";
                     }catch (Exception e){
-                        erro = "erro ao logar";
+                        erro = "Email ou Senha Incorreta";
                     }
+
+
                     Snackbar snackbar = Snackbar.make(view, erro, Snackbar.LENGTH_SHORT);
 
                     //mandar a snackbar pro topo
@@ -161,5 +168,11 @@ public class FormLogin extends AppCompatActivity {
         progressbar = findViewById(R.id.progressbar);
 
 
+    }
+
+    //para garantir que não vai volta nenhuma activity
+    @Override
+    public void onBackPressed() {
+        // não chame o super desse método
     }
 }
