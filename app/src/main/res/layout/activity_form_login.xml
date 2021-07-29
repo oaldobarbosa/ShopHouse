@@ -65,6 +65,7 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="#4CAF50"
         android:text="Entrar"
+        android:contentDescription="Botão entrar"
         android:textStyle="bold"
         app:iconTint="#4CAF50" />
 
@@ -93,6 +94,7 @@
         android:backgroundTint="#4CAF50"
         android:ellipsize="none"
         android:text="Cadastre-se"
+        android:contentDescription="Botão cadastre-se"
         android:textStyle="bold" />
 
 

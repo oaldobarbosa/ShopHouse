@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="ClickMenu"
+        android:contentDescription="Botão Abrir Menu"
         android:src="@drawable/ic_menu"/>
 
     <TextView

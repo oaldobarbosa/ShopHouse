@@ -73,16 +73,12 @@ public class Dashboard extends AppCompatActivity {
             @NotNull
             @Override
             public ImovelPropViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-
-
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.imovel_item, parent, false);
                 return new ImovelPropViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ImovelPropViewHolder holder, int position, @NonNull @NotNull Imovel model) {
-                //
-                //
 
                 Picasso.get().load(model.getImg()).resize(60, 60).centerCrop().into(holder.imagemImovel);
 
@@ -124,7 +120,6 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void ClickMenu(View view){
-        //open drawer
         MainActivity.openDrawer(drawerLayout);
     }
 
@@ -160,14 +155,8 @@ public class Dashboard extends AppCompatActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //finish activy
-                //logout
                 FirebaseAuth.getInstance().signOut();
-
                 ChamarTelaLogin();
-
-                //exit
-                //System.exit(0);
             }
         });
 
@@ -175,12 +164,9 @@ public class Dashboard extends AppCompatActivity {
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //fechar dialogo
                 dialog.dismiss();
             }
         });
-
-        //show dialog
         builder.show();
     }
 

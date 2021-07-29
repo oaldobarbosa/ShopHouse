@@ -88,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ImovelViewHolder holder, int position, @NonNull @NotNull Imovel model) {
-                //
-                //
 
                 Picasso.get().load(model.getImg()).resize(60, 60).centerCrop().into(holder.imagemImovel);
 
@@ -112,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("telefone", model.getTelefone());
                         intent.putExtra("email", model.getEmail());
 
-
                         v.getContext().startActivity(intent);
                     }
                 });
@@ -124,22 +121,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
     }
 
     public void ClickMenu(View view){
-        //abrir drawer
         openDrawer(drawerLayout);
-
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {
-        // open drawe layout
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
     public void ClickLogo(View view){
-        //fechar drawer
         closeDrawer(drawerLayout);
     }
 
@@ -171,15 +163,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClickLogout(View view){
-        //close app
         Logout(this);
-        //redirectActivity(this,);
     }
 
     public void Logout(Activity activity) {
         //inicializado aleta modal
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        //set title
+
         builder.setTitle("Logout");
         builder.setMessage("Voce deseja realmente sair?");
         //bt sim
@@ -229,12 +219,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
-        //close drawer
         closeDrawer(drawerLayout);
     }
 
-    //teste firebase ui
     //Imovel View Holder
 
     private class ImovelViewHolder extends RecyclerView.ViewHolder {

@@ -48,9 +48,7 @@ public class ViewImovelProp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ViewImovelProp.this, FormEditarImovel.class);
-
                 intent.putExtra("id_imovel", id_imovel);
-
                 startActivity(intent);
                 finish();
             }
@@ -64,22 +62,22 @@ public class ViewImovelProp extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                 db.collection("Imoveis").document(id_imovel).delete()
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                                msfToast("Imóvel Deletado com Sucesso!");
-                                Intent intent = new Intent(ViewImovelProp.this, Dashboard.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error deleting document", e);
-                            }
-                        });
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                            msfToast("Imóvel Deletado com Sucesso!");
+                            Intent intent = new Intent(ViewImovelProp.this, Dashboard.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error deleting document", e);
+                        }
+                    });
             }
         });
     }//fim oncreate
@@ -91,7 +89,6 @@ public class ViewImovelProp extends AppCompatActivity {
                 && getIntent().hasExtra("telefone") && getIntent().hasExtra("email")
                 && getIntent().hasExtra("id_imovel")
         ){
-
             img = getIntent().getStringExtra("img");
             titulo = getIntent().getStringExtra("titulo");
             descricao = getIntent().getStringExtra("descricao");
@@ -101,15 +98,12 @@ public class ViewImovelProp extends AppCompatActivity {
             telefone = getIntent().getStringExtra("telefone");
             email = getIntent().getStringExtra("email");
             id_imovel = getIntent().getStringExtra("id_imovel");
-
         }else{
             Toast.makeText(this, "Nenhum dado", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void setData(){
-
         Picasso.get().load(img).fit().into(imagem_imovel);
         titulo_imovel.setText(titulo);
         campo_descricao.setText(descricao);
@@ -118,11 +112,9 @@ public class ViewImovelProp extends AppCompatActivity {
         campo_estado.setText(estado);
         campo_telefone.setText(telefone);
         campo_email.setText(email);
-
     }
 
     private void IniciarComponentes(){
-
         imagem_imovel = findViewById(R.id.imagem_imovel);
         titulo_imovel = findViewById(R.id.titulo_imovel);
         campo_descricao = findViewById(R.id.campo_descricao);
@@ -131,10 +123,8 @@ public class ViewImovelProp extends AppCompatActivity {
         campo_estado = findViewById(R.id.campo_estado);
         campo_telefone = findViewById(R.id.campo_telefone);
         campo_email = findViewById(R.id.campo_email);
-
         bt_editar = findViewById(R.id.bt_editar);
         bt_deletar = findViewById(R.id.bt_deletar);
-
     }
 
     //toast messagem

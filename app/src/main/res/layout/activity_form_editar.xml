@@ -108,6 +108,7 @@
         android:layout_marginTop="25dp"
         android:backgroundTint="#4CAF50"
         android:text="Salvar Alterações"
+        android:contentDescription="Botão salvar alterações"
         android:textAllCaps="false"/>
 
 </LinearLayout>

@@ -70,22 +70,15 @@ public class FormEditarImovel extends AppCompatActivity {
                 String email = edit_email.getText().toString();
 
                 if (titulo.isEmpty() || descricao.isEmpty() || endereco.isEmpty() || telefone.isEmpty() || email.isEmpty() ){
-
                     msfToast("Preencha Todos os Campos!");
-
                 }else{
-
                     EditarDadosImovel();
-
-                }//fim else
+                }
             }
         });
     }
 
-
-
     private void EditarDadosImovel() {
-
 
         String titulo = edit_titulo.getText().toString();
         String descricao = edit_descricao.getText().toString();
@@ -118,21 +111,16 @@ public class FormEditarImovel extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
                 Log.d("db_erro", "Erro ao salvar dados" + e.toString());
-
             }
         });
-
     }
 
     private void IniciarComponentes() {
-
         edit_titulo = findViewById(R.id.edit_titulo);
         edit_descricao = findViewById(R.id.edit_descricao);
         edit_endereco = findViewById(R.id.edit_endereco);
-
         text_estado = findViewById(R.id.text_estado);
         text_cidade = findViewById(R.id.text_cidade);
-
         edit_telefone = findViewById(R.id.edit_telefone);
 
         //mascara telefone
@@ -140,15 +128,10 @@ public class FormEditarImovel extends AppCompatActivity {
         MaskTextWatcher mtw = new MaskTextWatcher(edit_telefone, smf);
         edit_telefone.addTextChangedListener(mtw);
 
-
         edit_email = findViewById(R.id.edit_email);
-
         iv_imagemSelecionada = findViewById(R.id.iv_imagemSelecionada);
         bt_selecionarImagem = findViewById(R.id.bt_selecionarImagem);
-
         bt_salvar = findViewById(R.id.bt_salvar);
-
-
     }
 
     @Override
@@ -157,7 +140,6 @@ public class FormEditarImovel extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String id_imovel = extras.getString("id_imovel");
-
 
         DocumentReference documentReference = db.collection("Imoveis").document(id_imovel);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -178,7 +160,6 @@ public class FormEditarImovel extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     //mensagem

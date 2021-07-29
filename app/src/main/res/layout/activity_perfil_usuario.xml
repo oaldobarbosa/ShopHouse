@@ -150,6 +150,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text="Editar Dados"
+        android:contentDescription="Botão editar dados de usuário"
         android:backgroundTint="@color/alert"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/campo_estado"/>
@@ -164,6 +165,7 @@
         android:layout_marginRight="20dp"
         android:backgroundTint="@color/warning"
         android:text="Excluir Conta"
+        android:contentDescription="Botão excluir conta do usuário"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bt_editarDados"/>
 

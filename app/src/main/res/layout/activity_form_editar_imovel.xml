@@ -145,6 +145,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:text="Salvar Alterações"
+        android:contentDescription="Botão salvar alterações"
         android:textAllCaps="false"
         android:layout_gravity="center"
         android:backgroundTint="@color/success"/>

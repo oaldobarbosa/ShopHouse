@@ -46,7 +46,6 @@ public class PerfilUsuario extends AppCompatActivity {
 
     String iduser = usuarioAtualId;
 
-
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private DatabaseReference dbRef;
 
@@ -163,7 +162,6 @@ public class PerfilUsuario extends AppCompatActivity {
                     campo_estado.setText(documentSnapshot.getString("estado"));
 
                 }
-
             }
         });
     }
@@ -176,21 +174,17 @@ public class PerfilUsuario extends AppCompatActivity {
         campo_endereco = findViewById(R.id.campo_endereco);
         campo_cidade = findViewById(R.id.campo_cidade);
         campo_estado = findViewById(R.id.campo_estado);
-        //buttons
         bt_editarDados = findViewById(R.id.bt_editarDados);
         bt_excluirConta = findViewById(R.id.bt_excluirConta);
 
     }
 
     public void ChamarTelaLogin() {
-
-        //redirecionar para tela de login
         Intent intent = new Intent(PerfilUsuario.this, FormLogin.class);
         startActivity(intent);
         finish();
     }
 
-    //toast messagem
     private void msfToast(String s) {
         Toast.makeText(getApplicationContext(), s , Toast.LENGTH_SHORT).show();
     }

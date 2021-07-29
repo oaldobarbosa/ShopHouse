@@ -3,11 +3,13 @@ package com.example.shophouse;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,9 +51,8 @@ public class FormCadastroImovel extends AppCompatActivity {
 
     private EditText edit_titulo, edit_descricao, edit_endereco, edit_estado, edit_cidade, edit_telefone, edit_email;
     private Button bt_cadastrarImovel;
-    String[] mensagens = {"preencha todos os campos", "imovel cadastrado com sucesso"};
+    String[] mensagens = {"Preencha Todos os Campos", "Selecione uma Imagem"};
     String usuarioAtualId;
-
 
     //criando referencia na unha
     private StorageReference storageRef;
@@ -63,22 +64,16 @@ public class FormCadastroImovel extends AppCompatActivity {
     private Spinner select_estado;
     private Spinner select_cidade;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_cadastro_imovel);
-
         storageRef = FirebaseStorage.getInstance().getReference();
 
-        //esconder toolbar
         getSupportActionBar().hide();
-
-
         //iniciando componentes
         IniciarComponentes();
 
-        //
         //spinner estado
         ArrayAdapter<String> estadoAdapterSpinner = new ArrayAdapter<>(FormCadastroImovel.this, android.R.layout.
                 simple_list_item_1, getResources().getStringArray(R.array.estados));
@@ -90,8 +85,6 @@ public class FormCadastroImovel extends AppCompatActivity {
                 simple_list_item_1, getResources().getStringArray(R.array.cidades));
         cidadeAdapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         select_cidade.setAdapter(cidadeAdapterSpinner);
-
-
 
         //ao clicar no bt_cadastrarImovel
         bt_cadastrarImovel.setOnClickListener(new View.OnClickListener() {
@@ -105,28 +98,35 @@ public class FormCadastroImovel extends AppCompatActivity {
                 String cidade = select_cidade.getSelectedItem().toString();
                 String telefone = edit_telefone.getText().toString();
                 String email = edit_email.getText().toString();
+                Drawable img = iv_imagemSelecionada.getDrawable();
+
 
                 if (titulo.isEmpty() || descricao.isEmpty() || endereco.isEmpty() || estado.isEmpty() || cidade.isEmpty() ||
                 telefone.isEmpty() || email.isEmpty() ){
 
                     Snackbar snackbar = Snackbar.make(v, mensagens[0], Snackbar.LENGTH_SHORT);
-
-                    //mandar a snackbar pro topo
                     View view = snackbar.getView();
                     FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
                     params.gravity = Gravity.TOP;
                     view.setLayoutParams(params);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
 
+                }else if( img == null){
+
+                    Snackbar snackbar = Snackbar.make(v, mensagens[1], Snackbar.LENGTH_SHORT);
+                    View view = snackbar.getView();
+                    FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                    params.gravity = Gravity.TOP;
+                    view.setLayoutParams(params);
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
 
                 }else{
-
                     SalvarDadosImovel();
-
-                }//fim else
-
+                }
             }
         });
 
@@ -137,7 +137,6 @@ public class FormCadastroImovel extends AppCompatActivity {
                 selecionarImage();
             }
         });
-
     }
 
     //funcao para selecionar imagem
@@ -156,9 +155,9 @@ public class FormCadastroImovel extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 1){
             Uri uri = data.getData();
             iv_imagemSelecionada.setImageURI(uri);
+            //iv_imagemSelecionada.getLayoutParams().height = 180;
         }
     }
-
 
     private void SalvarDadosImovel(){
 
@@ -170,8 +169,6 @@ public class FormCadastroImovel extends AppCompatActivity {
 
         String filename = UUID.randomUUID().toString();
         StorageReference imgRef = storageRef.child(filename);
-
-
 
         UploadTask uploadTask = imgRef.putBytes(imagem);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -210,23 +207,20 @@ public class FormCadastroImovel extends AppCompatActivity {
                         imoveis.put("img", url);
 
                         DocumentReference documentReference = db.collection("Imoveis").document();
-                        String id_imovel = documentReference.getPath().substring(8);//gambiarra para remover o Imoveis/ kkkk
+                        String id_imovel = documentReference.getPath().substring(8);//gambiarra para remover o "Imoveis/" kkkk
                         imoveis.put("id_imovel", id_imovel);
 
                         documentReference.set(imoveis).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-
                                 Log.d("db", "Sucesso ao salvar dados");
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull @NotNull Exception e) {
                                 Log.d("db_erro", "Erro ao salvar dados" + e.toString());
-
                             }
                         });
-
                     }
                 });
 
@@ -257,7 +251,6 @@ public class FormCadastroImovel extends AppCompatActivity {
         edit_titulo = findViewById(R.id.edit_titulo);
         edit_descricao = findViewById(R.id.edit_descricao);
         edit_endereco = findViewById(R.id.edit_endereco);
-
         edit_telefone = findViewById(R.id.edit_telefone);
         edit_email = findViewById(R.id.edit_email);
 
@@ -269,9 +262,7 @@ public class FormCadastroImovel extends AppCompatActivity {
         //selects
         select_estado = (Spinner)findViewById(R.id.select_estado);
         select_cidade = (Spinner)findViewById(R.id.select_cidade);
-
         iv_imagemSelecionada = (ImageView)findViewById(R.id.iv_imagemSelecionada);
-
         bt_selecionarImagem = (Button)findViewById(R.id.bt_selecionarImagem);
         bt_cadastrarImovel = findViewById(R.id.bt_cadastrarImovel);
 

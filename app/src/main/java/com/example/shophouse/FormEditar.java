@@ -52,8 +52,6 @@ public class FormEditar extends AppCompatActivity {
 
         IniciarComponentes();
 
-        //click bt salvar alteraçoes
-
         bt_salvarAlteracoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,9 +81,6 @@ public class FormEditar extends AppCompatActivity {
                 }else{
                     AlterarDados(v);
                 }
-
-
-
             }
         });
     }
@@ -116,15 +111,13 @@ public class FormEditar extends AppCompatActivity {
 
                 //realizado com sucesso
                 msfToast("Dados Alterados com Sucesso!");
-
                 TelaPerfil();
 
-                Log.d("db", "Sucesso ao editar dados");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                //realizado com sucesso
+                //falha
                 Snackbar snackbar = Snackbar.make(v, mensagens[2], Snackbar.LENGTH_SHORT);
 
                 //mandar a snackbar pro topo
@@ -136,14 +129,9 @@ public class FormEditar extends AppCompatActivity {
                 snackbar.setBackgroundTint(Color.WHITE);
                 snackbar.setTextColor(Color.BLACK);
                 snackbar.show();
-                Log.d("db_erro", "Erro ao editar dados");
 
             }
         });
-
-
-
-
     }
 
     private void TelaPerfil() {
@@ -151,7 +139,6 @@ public class FormEditar extends AppCompatActivity {
         Intent intent = new Intent(FormEditar.this, PerfilUsuario.class);
         startActivity(intent);
         finish();
-
     }
 
     @Override
@@ -172,13 +159,11 @@ public class FormEditar extends AppCompatActivity {
                     edit_cidade.setText(documentSnapshot.getString("cidade"));
                     edit_estado.setText(documentSnapshot.getString("estado"));
                 }
-
             }
         });
     }
 
     private void IniciarComponentes() {
-
         edit_nome = findViewById(R.id.edit_nome);
         edit_telefone = findViewById(R.id.edit_telefone);
         edit_endereco = findViewById(R.id.edit_endereco);
@@ -191,13 +176,11 @@ public class FormEditar extends AppCompatActivity {
         edit_telefone.addTextChangedListener(mtw);
 
         bt_salvarAlteracoes = findViewById(R.id.bt_salvarAlteracoes);
-
     }
 
     //toast messagem
     private void msfToast(String s) {
         Toast.makeText(getApplicationContext(), s , Toast.LENGTH_SHORT).show();
     }
-
 
 }

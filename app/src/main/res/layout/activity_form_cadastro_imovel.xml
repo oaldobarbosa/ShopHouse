@@ -133,9 +133,11 @@
     <ImageView
         android:id="@+id/iv_imagemSelecionada"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="180dp"
+        android:adjustViewBounds="true"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_image"
+
          />
 
     <Button
@@ -145,6 +147,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="Selecionar Imagem"
+        android:contentDescription="Botão selecionar imagem"
         android:textAllCaps="false"/>
 
     <Button
@@ -154,6 +157,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:text="Cadastrar Imóvel"
+        android:contentDescription="Botão Cadastrar Imóvel"
         android:textAllCaps="false"
         android:layout_gravity="center"
         android:backgroundTint="@color/success"/>

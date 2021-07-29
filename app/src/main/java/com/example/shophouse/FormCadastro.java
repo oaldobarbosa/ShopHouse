@@ -187,7 +187,6 @@ public class FormCadastro extends AppCompatActivity {
                 Log.d("db_erro", "Erro ao salvar dados" + e.toString());
             }
         });
-
     }
 
     private void IniciarComponentes(){
@@ -204,7 +203,6 @@ public class FormCadastro extends AppCompatActivity {
         SimpleMaskFormatter smf = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
         MaskTextWatcher mtw = new MaskTextWatcher(edit_telefone, smf);
         edit_telefone.addTextChangedListener(mtw);
-
     }
 
     //mensagem

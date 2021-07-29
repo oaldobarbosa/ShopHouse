@@ -38,10 +38,7 @@ public class FormLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_login);
 
-        //esconder toolbar
         getSupportActionBar().hide();
-
-        //iniciando componentes
         IniciarComponentes();
 
         //redirecionar para tela de cadastro
@@ -62,7 +59,7 @@ public class FormLogin extends AppCompatActivity {
                 String senha = edit_senha.getText().toString();
 
                 if (email.isEmpty() || senha.isEmpty()){
-                    //preencher tood os campos
+                    //preencher todos os campos
                     Snackbar snackbar = Snackbar.make(v, mensagens[0], Snackbar.LENGTH_SHORT);
 
                     //mandar a snackbar pro topo
@@ -96,9 +93,7 @@ public class FormLogin extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
                             TelaPrincipal();
-
                         }
                     }, 2000);
                 }else {
@@ -115,7 +110,6 @@ public class FormLogin extends AppCompatActivity {
                         erro = "Email ou Senha Incorreta";
                     }
 
-
                     Snackbar snackbar = Snackbar.make(view, erro, Snackbar.LENGTH_SHORT);
 
                     //mandar a snackbar pro topo
@@ -128,14 +122,11 @@ public class FormLogin extends AppCompatActivity {
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
                 }
-
             }
         });
-
     }
 
     //ciclo de vida
-
 
     @Override
     protected void onStart() {
@@ -156,18 +147,11 @@ public class FormLogin extends AppCompatActivity {
     }
 
     private void IniciarComponentes(){
-
-        //edit texts
         edit_email = findViewById(R.id.edit_email);
         edit_senha = findViewById(R.id.edit_senha);
-
-        //buttons
         bt_entrar = findViewById(R.id.bt_entrar);
         bt_cadastrese = findViewById(R.id.bt_cadastrese);
-
         progressbar = findViewById(R.id.progressbar);
-
-
     }
 
     //para garantir que não vai volta nenhuma activity
